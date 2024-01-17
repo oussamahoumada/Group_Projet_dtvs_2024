@@ -1,13 +1,15 @@
-import React from 'react';
-import './App.css';
-import NavBar from './components/navbar/navbar';
+import React from 'react'
+import './App.css'
+import NavBar from './components/navbar/navbar'
+import GraphCountryFootballer from './components/Graph/GraphCountry'
 
 function App() {
   return (
     <div className="App">
       <NavBar />
-    </div>      
-  );
+      <GraphCountryFootballer />
+    </div>
+  )
 }
 
-export default App;
+export default App
