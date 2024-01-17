@@ -1,4 +1,5 @@
 import "./style.css";
+import React from "react";
 import { FaHome } from "react-icons/fa";
 import { CiSearch } from "react-icons/ci";
 import { GiSoccerKick } from "react-icons/gi";
