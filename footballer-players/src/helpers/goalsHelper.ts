@@ -47,7 +47,7 @@ export function getTopFareGoal() {
     const shodist = player.ShoDist;
 
     if (!topFareGoal[Squad] || shodist > topFareGoal[Squad].ShoDist) {
-      topFareGoal[Squad] = { Player: Squad, ShoDist: shodist };
+      topFareGoal[Squad] = shodist ;
     }
   });
 
