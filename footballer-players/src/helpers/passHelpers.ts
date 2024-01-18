@@ -1,79 +1,91 @@
 import dataWithImage from "../assets/dataWithImage.json";
+import { PlayerData, PlayerInterface } from "../interfaces/PlayerInterface";
+import { ResponseInterface } from "../interfaces/ResponseInterface";
 
-export function getTopAssist() {
-  const topAssist: any = {};
-  const data = dataWithImage;
-  const topAssistCount: any = {};
+const playersData: PlayerData = {
+  data: dataWithImage,
+};
 
-  data.forEach((player: any) => {
-    const competition = player.Comp;
-    const Assists = player.Assists;
+export function getTopAssists(): ResponseInterface
+{
+  const topAssists: Record<string, number> = {};
+  const topAssistsCount: Record<string, number> = {};
 
-    if (!topAssist[competition]) {
-      topAssist[competition] = Assists;
-      topAssistCount[competition] = 1;
+  playersData.data.forEach((player: PlayerInterface) => {
+    const competition: string = player.Comp;
+    const assists: number = player.Assists;
+
+    if (!topAssists[competition]) {
+      topAssists[competition] = assists;
+      topAssistsCount[competition] = 1;
     } else {
-      topAssist[competition] += Assists;
-      topAssistCount[competition] += 1;
+      topAssists[competition] += assists;
+      topAssistsCount[competition] += 1;
     }
   });
-  Object.keys(topAssist).forEach((it) => {
-    topAssist[it] = topAssist[it] / topAssistCount[it];
+
+  Object.keys(topAssists).forEach((assist: string) => {
+    topAssists[assist] = topAssists[assist] / topAssistsCount[assist];
   });
+
   return {
-    label: Object.keys(topAssist),
-    values: Object.values(topAssist),
+    labels: Object.keys(topAssists),
+    values: Object.values(topAssists),
   };
 }
 
-export function getTopPPA() {
-  const topPPA: any = {};
-  const data = dataWithImage;
-  const topPPACount: any = {};
+export function getTopPPA(): ResponseInterface
+{
+  const topPPA: Record<string, number> = {};
+  const topPPACount: Record<string, number> = {};
 
-  data.forEach((player: any) => {
-    const Squad = player.Comp;
-    const PPA = player.PPA;
+  playersData.data.forEach((player: PlayerInterface) => {
+    const squad: string = player.Comp;
+    const ppa: number = player.PPA;
 
-    if (!topPPA[Squad]) {
-      topPPA[Squad] = PPA;
-      topPPACount[Squad] = 1;
+    if (!topPPA[squad]) {
+      topPPA[squad] = ppa;
+      topPPACount[squad] = 1;
     } else {
-      topPPA[Squad] += PPA;
-      topPPACount[Squad] += 1;
+      topPPA[squad] += ppa;
+      topPPACount[squad] += 1;
     }
   });
-  Object.keys(topPPA).forEach((it) => {
-    topPPA[it] = topPPA[it] / topPPACount[it];
+
+  Object.keys(topPPA).forEach((ppa: string) => {
+    topPPA[ppa] = topPPA[ppa] / topPPACount[ppa];
   });
+
   return {
-    label: Object.keys(topPPA),
+    labels: Object.keys(topPPA),
     values: Object.values(topPPA),
   };
 }
 
-export function getTopSw() {
-  const topSw: any = {};
-  const data = dataWithImage;
-  const topSwCount: any = {};
+export function getTopSw(): ResponseInterface
+{
+  const topSw: Record<string, number> = {};
+  const topSwCount: Record<string, number> = {};
 
-  data.forEach((player: any) => {
-    const Squad = player.Comp;
-    const Sw = player.Sw;
+  playersData.data.forEach((player: PlayerInterface) => {
+    const squad: string = player.Comp;
+    const sw: number = player.Sw;
 
-    if (!topSw[Squad]) {
-      topSw[Squad] = Sw;
-      topSwCount[Squad] = 1;
+    if (!topSw[squad]) {
+      topSw[squad] = sw;
+      topSwCount[squad] = 1;
     } else {
-      topSw[Squad] += Sw;
-      topSwCount[Squad] += 1;
+      topSw[squad] += sw;
+      topSwCount[squad] += 1;
     }
   });
-  Object.keys(topSw).forEach((it) => {
-    topSw[it] = topSw[it] / topSwCount[it];
+
+  Object.keys(topSw).forEach((sw: string) => {
+    topSw[sw] = topSw[sw] / topSwCount[sw];
   });
+
   return {
-    label: Object.keys(topSw),
+    labels: Object.keys(topSw),
     values: Object.values(topSw),
   };
 }

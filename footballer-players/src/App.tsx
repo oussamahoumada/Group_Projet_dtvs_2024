@@ -1,12 +1,12 @@
 import './App.css'
 import React from 'react'
 import Home from './components/home'
-import Goal from './components/Pages/Goal'
-import Foul from './components/Pages/Foul'
+import Goal from './pages/Goal'
+import Foul from './pages/Foul'
 import { Outlet } from "react-router-dom";
-import Passe from './components/Pages/Passe'
+import Passe from './pages/Passe'
 import NavBar from './components/navbar/navbar'
-import Exercice3 from './components/Pages/Exercice3'
+import Exercice3 from './pages/Exercice3'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {

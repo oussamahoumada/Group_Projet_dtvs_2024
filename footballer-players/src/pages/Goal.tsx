@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { getTopFareGoal, getTopGoalOnTarget, getTopScorers } from "../../helpers/goalsHelper";
-import ChartComponent from "../Graph/ChartComponent";
+import { getTopFareGoal, getTopGoalOnTarget, getTopScorers } from "../helpers/goalsHelper";
+import ChartComponent from "../components/Graph/ChartComponent";
 import { CircularProgress } from "@mui/material";
 
 function Goal() {
@@ -44,6 +44,8 @@ function Goal() {
             {dataTopScores ? (
                 <>
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '50%', height: '50vh' }}>
+                    {/* Changer le title */}
+
                     <ChartComponent
                         labels={labelsTopGoalsOnTarget}
                         data={dataTopGoalsOnTarget}
@@ -51,7 +53,7 @@ function Goal() {
                         titleChart="Graphique les meilleurs buteurs pour chaque compétition."
                     />
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '50%', height: '50vh' }}>
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '50%', height: '50vh', 'marginTop': '3%' }}>
                     <ChartComponent
                         labels={labelsTopScorers}
                         data={dataTopScores}
@@ -60,6 +62,8 @@ function Goal() {
                     />
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '50%', height: '50vh', 'marginTop': '5%' }}>
+                    {/* Changer le title */}
+
                     <ChartComponent
                         labels={labelsTopFareGoal}
                         data={dataTopFareGoal}

@@ -1,11 +1,12 @@
 import dataWithImage from "../assets/dataWithImage.json";
-import { PlayerData, PlayerInterface } from "../intefaces/PlayerInterface";
+import { PlayerData, PlayerInterface } from "../interfaces/PlayerInterface";
+import { ResponseInterface } from "../interfaces/ResponseInterface";
 
 const playersData: PlayerData = {
   data: dataWithImage,
 };
 
-export function getTopScorers(): { labels: string[]; values: number[] }
+export function getTopScorers(): ResponseInterface
 {
   const topScorers: Record<string, number> = {};
 
@@ -24,7 +25,7 @@ export function getTopScorers(): { labels: string[]; values: number[] }
   };
 }
 
-export function getTopGoalOnTarget(): { labels: string[]; values: number[] }
+export function getTopGoalOnTarget(): ResponseInterface
 {
   const topGoalOnTarget: Record<string, number> = {};
 
@@ -45,10 +46,7 @@ export function getTopGoalOnTarget(): { labels: string[]; values: number[] }
   };
 }
 
-export function getTopFareGoal(): {
-  labels: string[];
-  values: number[];
-} 
+export function getTopFareGoal(): ResponseInterface 
 {
   const topFareGoal: Record<string, number> = {}
 

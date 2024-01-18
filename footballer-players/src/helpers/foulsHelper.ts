@@ -1,69 +1,78 @@
 import dataWithImage from "../assets/dataWithImage.json";
+import { PlayerData, PlayerInterface } from "../interfaces/PlayerInterface";
+import { ResponseInterface } from "../interfaces/ResponseInterface";
 
-//Bar
-export function getTopCard() {
-  const topCard: any = {};
-  const data = dataWithImage;
-  const topCardCount: any = {};
+const playersData: PlayerData = {
+  data: dataWithImage,
+};
 
-  data.forEach((player: any) => {
-    const competition = player.Comp;
-    const CrdY = player.CrdY;
-    const CrdR = player.CrdR;
+export function getTopCard(): ResponseInterface
+{
+  const topCard: Record<string, number> = {};
+  const topCardCount: Record<string, number> = {};
+
+  playersData.data.forEach((player: PlayerInterface) => {
+    const competition: string = player.Comp;
+    const crdY: number = player.CrdY;
+    const crdR: number = player.CrdR;
 
     if (!topCard[competition]) {
-      topCard[competition] = CrdY + CrdR;
+      topCard[competition] = crdY + crdR;
       topCardCount[competition] = 1;
     } else {
-      topCard[competition] += CrdY + CrdR;
+      topCard[competition] += crdY + crdR;
       topCardCount[competition] += 1;
     }
   });
-  Object.keys(topCard).forEach((it) => {
+
+  Object.keys(topCard).forEach((it: string) => {
     topCard[it] = topCard[it] / (topCardCount[it] * 2);
   });
+
   return {
-    label: Object.keys(topCard),
+    labels: Object.keys(topCard),
     values: Object.values(topCard),
   };
 }
 
-//Donut
-export function getTkl() {
-  const Tackles: any = {};
-  const data = dataWithImage;
+export function getTkl(): ResponseInterface
+{
+  const tackles: Record<string, number> = {};
 
-  data.forEach((player: any) => {
-    const Squad = player.Squad;
-    const tkl = player.Tkl;
+  playersData.data.forEach((player: PlayerInterface) => {
+    const squad: string = player.Squad;
+    const tkl: number = player.Tkl;
 
-    if (!Tackles[Squad] || tkl > Tackles[Squad]) {
-      Tackles[Squad] = tkl;
+    if (!tackles[squad] || tkl > tackles[squad]) {
+      tackles[squad] = tkl;
     }
   });
 
+  const firstData = Object.fromEntries(Object.entries(tackles).slice(0, 10))
+  
   return {
-    label: Object.keys(Tackles),
-    values: Object.values(Tackles),
+    labels: Object.keys(firstData),
+    values: Object.values(firstData),
   };
 }
 
-//Line
-export function getDefenciveFouls() {
-  const Tackles: any = {};
-  const data = dataWithImage;
+export function getDefenciveFouls(): ResponseInterface
+{
+  const tackles: Record<string, number> = {};
 
-  data.forEach((player: any) => {
-    const Squad = player.Squad;
-    const Fls = player.Fls;
+  playersData.data.forEach((player: PlayerInterface) => {
+    const squad: string = player.Squad;
+    const fls: number = player.Fls;
 
-    if (!Tackles[Squad] || Fls > Tackles[Squad]) {
-      Tackles[Squad] = Fls;
+    if (!tackles[squad] || fls > tackles[squad]) {
+      tackles[squad] = fls;
     }
   });
 
+  const firstData = Object.fromEntries(Object.entries(tackles).slice(0,10))
+
   return {
-    label: Object.keys(Tackles),
-    values: Object.values(Tackles),
+    labels: Object.keys(firstData),
+    values: Object.values(firstData),
   };
 }
