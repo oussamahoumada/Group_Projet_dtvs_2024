@@ -5,6 +5,7 @@ import { GiSoccerKick } from "react-icons/gi";
 import { GiGoalKeeper } from "react-icons/gi";
 import { IoMdFootball } from "react-icons/io";
 import { FaUserInjured } from "react-icons/fa";
+import { LiaPenSolid } from "react-icons/lia";
 
 function NavBar() {
     return <>
@@ -28,7 +29,7 @@ function NavBar() {
                         <div className="navbar-item-inner-icon-wrapper flexbox">
                             <GiGoalKeeper />
                         </div>
-                        <span className="link-text">Goal</span>
+                        <span className="link-text">Buts</span>
                     </a>
                 </li>
                 <li className="navbar-item flexbox-left">
@@ -36,7 +37,7 @@ function NavBar() {
                         <div className="navbar-item-inner-icon-wrapper flexbox">
                             <GiSoccerKick />
                         </div>
-                        <span className="link-text">Pass</span>
+                        <span className="link-text">Passe</span>
                     </a>
                 </li>
                 <li className="navbar-item flexbox-left">
@@ -44,7 +45,15 @@ function NavBar() {
                         <div className="navbar-item-inner-icon-wrapper flexbox">
                             <FaUserInjured />
                         </div>
-                        <span className="link-text">Foul</span>
+                        <span className="link-text">Fautes</span>
+                    </a>
+                </li>
+                <li className="navbar-item flexbox-left">
+                    <a className="navbar-item-inner flexbox-left" href="exercice3">
+                        <div className="navbar-item-inner-icon-wrapper flexbox">
+                            <LiaPenSolid />
+                        </div>
+                        <span className="link-text">Exercice3</span>
                     </a>
                 </li>
             </ul>
