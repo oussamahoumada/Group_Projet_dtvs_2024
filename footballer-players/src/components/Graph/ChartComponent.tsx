@@ -38,7 +38,7 @@ ChartJS.register(
     BarElement
 )
 
-function setUpDoughnut(labels: string[], dataChart: number[]): ChartData<'doughnut' | 'bar' | 'line', number[], unknown>
+function setUpChart(labels: string[], dataChart: number[]): ChartData<'doughnut' | 'bar' | 'line', number[], unknown>
 {
     return {
         labels: labels,
@@ -52,7 +52,7 @@ function setUpDoughnut(labels: string[], dataChart: number[]): ChartData<'doughn
     }
 }
 
-// function setUpDoughnut(labels: string[], dataChart: number[]): ChartData<'doughnut' | 'bar' | 'line', number[], unknown> {
+// function setUpChart(labels: string[], dataChart: number[]): ChartData<'doughnut' | 'bar' | 'line', number[], unknown> {
 //     const datasets = labels.map((label, index) => ({
 //         label: `Chart ${label}`,
 //         // data: [dataChart[index]],
@@ -107,8 +107,8 @@ const ChartComponent: React.FC<ChartComponentProps> = ({ labels, data, chartLabe
     })
 
     useEffect(() => {
-        const setUpChart = setUpDoughnut(labels, data)
-        setDataChart(setUpChart)
+        const setUp = setUpChart(labels, data)
+        setDataChart(setUp)
     }, [labels, data])
 
     return chartToReturned(chartLabel, titleChart, dataChart)

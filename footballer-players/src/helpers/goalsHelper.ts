@@ -1,10 +1,15 @@
 import dataWithImage from "../assets/dataWithImage.json";
+import { PlayerData, PlayerInterface } from "../intefaces/PlayerInterface";
 
-export function getTopScorers() {
-  const topScorers: any = {};
-  const data = dataWithImage;
+const playersData: PlayerData = {
+  data: dataWithImage,
+};
 
-  data.forEach((player: any) => {
+export function getTopScorers(): { labels: string[]; values: number[] }
+{
+  const topScorers: Record<string, number> = {};
+
+  playersData.data.forEach((player: PlayerInterface) => {
     const competition = player.Comp;
     const goals = player.Goals;
 
@@ -14,45 +19,52 @@ export function getTopScorers() {
   });
 
   return {
-    label: Object.keys(topScorers),
+    labels: Object.keys(topScorers),
     values: Object.values(topScorers),
   };
 }
 
-export function getTopGoalOnTarget() {
-  const topGoalOnTarget: any = {};
-  const data = dataWithImage;
+export function getTopGoalOnTarget(): { labels: string[]; values: number[] }
+{
+  const topGoalOnTarget: Record<string, number> = {};
 
-  data.forEach((player: any) => {
-    const Squad = player.Squad;
-    const sot = player.SoT;
+  playersData.data.forEach((player: PlayerInterface) => {
+    const squad: string = player.Squad;
+    const sot: number = player.SoT;
 
-    if (!topGoalOnTarget[Squad] || sot > topGoalOnTarget[Squad]) {
-      topGoalOnTarget[Squad] = sot;
+    if (!topGoalOnTarget[squad] || sot > topGoalOnTarget[squad]) {
+      topGoalOnTarget[squad] = sot;
     }
   });
 
+  const firstData = Object.fromEntries(Object.entries(topGoalOnTarget).slice(0,10))
+
   return {
-    label: Object.keys(topGoalOnTarget),
-    values: Object.values(topGoalOnTarget),
+    labels: Object.keys(firstData),
+    values: Object.values(firstData),
   };
 }
 
-export function getTopFareGoal() {
-  const topFareGoal: any = {};
-  const data = dataWithImage;
+export function getTopFareGoal(): {
+  labels: string[];
+  values: number[];
+} 
+{
+  const topFareGoal: Record<string, number> = {}
 
-  data.forEach((player: any) => {
-    const Squad = player.Squad;
-    const shodist = player.ShoDist;
+  playersData.data.forEach((player: PlayerInterface) => {
+    const squad: string = player.Squad;
+    const shodist: number = player.ShoDist;
 
-    if (!topFareGoal[Squad] || shodist > topFareGoal[Squad].ShoDist) {
-      topFareGoal[Squad] = { Player: Squad, ShoDist: shodist };
+    if (!topFareGoal[squad] || shodist > topFareGoal[squad]) {
+      topFareGoal[squad] = shodist;
     }
   });
 
+  const firstData = Object.fromEntries(Object.entries(topFareGoal).slice(0,10))
+
   return {
-    label: Object.keys(topFareGoal),
-    values: Object.values(topFareGoal),
+    labels: Object.keys(firstData),
+    values: Object.values(firstData),
   };
 }
