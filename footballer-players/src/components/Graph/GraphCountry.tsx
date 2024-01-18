@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, ChartData } from "chart.js"
 import { Doughnut } from "react-chartjs-2"
-import dataFootballer from '../../assets/football_players.json'
+import dataFootballer from '../../assets/football_players_exo3.json'
 import CircularProgress from '@mui/material/CircularProgress'
 
 ChartJS.register(ArcElement, Tooltip, Legend)
