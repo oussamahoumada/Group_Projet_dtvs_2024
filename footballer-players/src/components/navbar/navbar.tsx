@@ -24,7 +24,7 @@ function NavBar() {
                     </a>
                 </li>
                 <li className="navbar-item flexbox-left">
-                    <a className="navbar-item-inner flexbox-left" href="pass">
+                    <a className="navbar-item-inner flexbox-left" href="goal">
                         <div className="navbar-item-inner-icon-wrapper flexbox">
                             <GiGoalKeeper />
                         </div>
@@ -40,7 +40,7 @@ function NavBar() {
                     </a>
                 </li>
                 <li className="navbar-item flexbox-left">
-                    <a className="navbar-item-inner flexbox-left" href="pass">
+                    <a className="navbar-item-inner flexbox-left" href="foul">
                         <div className="navbar-item-inner-icon-wrapper flexbox">
                             <FaUserInjured />
                         </div>
