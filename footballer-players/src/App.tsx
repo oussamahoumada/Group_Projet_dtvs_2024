@@ -6,8 +6,8 @@ import Foul from './components/Pages/Foul'
 import { Outlet } from "react-router-dom";
 import Passe from './components/Pages/Passe'
 import NavBar from './components/navbar/navbar'
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Exercice3 from './components/Pages/Exercice3'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
