@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react"
-import { Chart as ChartJS, ArcElement, Tooltip, Legend, ChartData } from "chart.js"
-import { Doughnut } from "react-chartjs-2"
 import dataFootballer from '../../assets/football_players_exo3.json'
 import CircularProgress from '@mui/material/CircularProgress'
-
-ChartJS.register(ArcElement, Tooltip, Legend)
+import ChartComponent from "./ChartComponent"
 
 interface Player {
     Rank: number
@@ -40,41 +37,11 @@ function countPlayersByCountry(jsonData: PlayerData): Record<string, number> {
     return playersByCountry
 }
 
-const colorsChart = (numberOfLabels: number): string[] => {
-    const colors = []
-    for (let i = 0; i < numberOfLabels; i++) {
-        const color = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
-        colors.push(color)
-    }
-
-    return colors
-};
-
-function setUpChart(labels: string[], dataChart: number[]): ChartData<"doughnut", number[], unknown>
-{
-    return {
-        labels: labels,
-        datasets: [{
-            label: 'My First Dataset',
-            data: dataChart,
-            backgroundColor: colorsChart(labels.length),
-            hoverOffset: 4,
-        }],
-    }
-}
-
 function GraphCountryFootballer()
 {
     const [data, setData] = useState<Player[]>([])
-    const [dataChart, setDataChart] = useState<ChartData<"doughnut", number[], unknown>>({
-        labels: [],
-        datasets: [{
-            label: '',
-            data: [],
-            backgroundColor: [],
-            hoverOffset: 4,
-        }],
-    })
+    const [labels, setLabels] = useState<string[]>([])
+    const [dataCountries, setDatasCountries] = useState<number[]>([])
 
     useEffect(() => {
         const fetchData = async () => {
@@ -86,11 +53,10 @@ function GraphCountryFootballer()
                 
                 const playersByCountry = countPlayersByCountry(jsonData)
                 const coutries = Object.keys(playersByCountry)
+                setLabels(coutries)
 
                 const numbersCountries = Object.values(playersByCountry)
-                            
-                const dataSetUpChart = setUpChart(coutries, numbersCountries)
-                setDataChart(dataSetUpChart)
+                setDatasCountries(numbersCountries)
 
             } catch (error: any) {
                 console.error('Error setting JSON data:', error.message)
@@ -102,18 +68,23 @@ function GraphCountryFootballer()
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '50%', marginTop: '2%' }}>
-            {data && dataChart ? (
+            {data ? (
                 <>
                 <h3 style={{ marginBottom: '3%' }}>
                     Graphique réparations des joueurs par Pays
                 </h3>
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '50%', height: '50vh' }}>
-                    <Doughnut data={dataChart} />
+                    <ChartComponent
+                        labels={labels}
+                        data={dataCountries}
+                        chartLabel='doughnut'
+                        titleChart="Graphique réparations des joueurs par Pays"
+                    />
                 </div>
                 </>
             ) : (
                 <div>
-                <CircularProgress />
+                    <CircularProgress />
                 </div>
             )}
         </div>
