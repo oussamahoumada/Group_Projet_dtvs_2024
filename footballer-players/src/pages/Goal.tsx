@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { getTopFareGoal, getTopGoalOnTarget, getTopScorers } from "../helpers/goalsHelper";
-import ChartComponent from "../components/Graph/ChartComponent";
+import Grid from '@mui/material/Grid';
 import { CircularProgress } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import ChartComponent from "../components/Graph/ChartComponent";
+import { getTopFareGoal, getTopGoalOnTarget, getTopScorers } from "../helpers/goalsHelper";
 
 function Goal() {
     
@@ -42,38 +43,40 @@ function Goal() {
     return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '50%', marginTop: '2%' }}>
             {dataTopScores ? (
-                <>
-                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '50%', height: '50vh' }}>
-                    <ChartComponent
-                        labels={labelsTopGoalsOnTarget}
-                        data={dataTopGoalsOnTarget}
-                        chartLabel='doughnut'
-                        titleChart="Les équipes qui ont le plus de tires cadrés"
-                    />
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '50%', height: '50vh', 'marginTop': '3%' }}>
-                    <ChartComponent
-                        labels={labelsTopScorers}
-                        data={dataTopScores}
-                        chartLabel='bar'
-                        titleChart="Meilleurs buteurs pour chaque compétition."
-                    />
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '50%', height: '50vh', 'marginTop': '5%' }}>
-                    <ChartComponent
-                        labels={labelsTopFareGoal}
-                        data={dataTopFareGoal}
-                        chartLabel='line'
-                        titleChart="Les équipes avec les buts marqué de loin"
-                    />
-                </div>
-                </>
+                <Grid container spacing={1} style={{ justifyContent: 'center', paddingLeft: '2%' }}>
+                    <Grid item xs={4}>
+                        <ChartComponent
+                            labels={labelsTopGoalsOnTarget}
+                            data={dataTopGoalsOnTarget}
+                            chartLabel='doughnut'
+                            titleChart="Les équipes qui ont le plus de tires cadrés"
+                        />
+                    </Grid>
+                    <Grid item xs={6}>
+                        <ChartComponent
+                            labels={labelsTopScorers}
+                            data={dataTopScores}
+                            chartLabel='bar'
+                            titleChart="Meilleurs buteurs pour chaque compétition."
+                        />
+                    </Grid>
+                    <Grid item xs={9} style={{marginTop: '3%'}}>
+                        <ChartComponent
+                            labels={labelsTopFareGoal}
+                            data={dataTopFareGoal}
+                            chartLabel='line'
+                            titleChart="Les équipes avec les buts marqué de loin"
+                        />
+                    </Grid>
+                </Grid>
+            
             ) : (
                 <div>
                     <CircularProgress />
                 </div>
             )}
         </div>
+        
     )
 }
 

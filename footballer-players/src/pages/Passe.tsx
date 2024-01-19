@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
-import ChartComponent from "../components/Graph/ChartComponent";
-import { CircularProgress } from "@mui/material";
-import { getTopAssists, getTopPPA, getTopSw } from "../helpers/passHelpers";
+import Grid from '@mui/material/Grid'
+import { CircularProgress } from "@mui/material"
+import React, { useEffect, useState } from "react"
+import ChartComponent from "../components/Graph/ChartComponent"
+import { getTopAssists, getTopPPA, getTopSw } from "../helpers/passHelpers"
 
 function Passe() {
     
@@ -43,30 +44,32 @@ function Passe() {
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '50%', marginTop: '2%' }}>
             {dataTopAssists ? (
                 <>
-                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '50%', height: '50vh' }}>
-                    <ChartComponent
-                        labels={labelsTopAssists}
-                        data={dataTopAssists}
-                        chartLabel='doughnut'
-                        titleChart="Les équipes qui ont effectués le plus de passes correctes."
-                    />
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '50%', height: '50vh', 'marginTop': '3%' }}>
-                    <ChartComponent
-                        labels={labelsTopPPA}
-                        data={dataTopPPA}
-                        chartLabel='bar'
-                        titleChart="Graphique des nombres de passes décisives par compétition."
-                    />
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '50%', height: '50vh', 'marginTop': '5%' }}>
-                    <ChartComponent
-                        labels={labelsTopSw}
-                        data={dataTopSw}
-                        chartLabel='line'
-                        titleChart="Graphique équipé qui ont effectué le plus de passes longues."
-                    />
-                </div>
+                    <Grid container spacing={1} style={{ justifyContent: 'center', paddingLeft: '2%' }}>
+                        <Grid item xs={4}>
+                            <ChartComponent
+                                labels={labelsTopAssists}
+                                data={dataTopAssists}
+                                chartLabel='doughnut'
+                                titleChart="Les équipes qui ont effectués le plus de passes correctes."
+                            />
+                        </Grid>
+                        <Grid item xs={6}>
+                            <ChartComponent
+                                labels={labelsTopPPA}
+                                data={dataTopPPA}
+                                chartLabel='bar'
+                                titleChart="Graphique des nombres de passes décisives par compétition."
+                            />
+                        </Grid>
+                        <Grid item xs={10} style={{ marginTop: '3%' }}>
+                            <ChartComponent
+                                labels={labelsTopSw}
+                                data={dataTopSw}
+                                chartLabel='line'
+                                titleChart="Graphique équipé qui ont effectué le plus de passes longues."
+                            />
+                        </Grid>
+                    </Grid>
                 </>
             ) : (
                 <div>

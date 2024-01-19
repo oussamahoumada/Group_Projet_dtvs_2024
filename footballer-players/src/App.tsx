@@ -28,7 +28,7 @@ function App() {
       {/* <NavBar /> */}
       {/* <GraphCountryFootballer /> */}
       {/* <Home /> */}
-      <GeoCard></GeoCard>
+      {/* <GeoCard></GeoCard> */}
     </div>
   );
 }
