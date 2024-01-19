@@ -101,14 +101,7 @@ const countryCodeMapping = {
 };
 
 const GeoCard = ({ mapData, info }) => {
-  const handleClick = (e, countryCode) => {
-    // console.log(countryCode);
-  };
-
-  useEffect(() => {
-    // calculatCountryCards(dataFootballer);
-    console.log("Je suis dans GeoCard ", info);
-  }, []);
+  const handleClick = () => {};
 
   return (
     <div>
