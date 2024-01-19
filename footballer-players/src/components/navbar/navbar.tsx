@@ -7,6 +7,7 @@ import { IoMdFootball } from "react-icons/io";
 import { FaUserInjured } from "react-icons/fa";
 import { LiaPenSolid } from "react-icons/lia";
 import { Link, Outlet } from "react-router-dom";
+import { FaAudioDescription } from "react-icons/fa";
 
 function NavBar() {
   return (
@@ -86,6 +87,20 @@ function NavBar() {
                 style={{ textDecoration: "none" }}
               >
                 Exercice3
+              </Link>
+            </div>
+          </li>
+          <li className="navbar-item flexbox-left">
+            <div className="navbar-item-inner flexbox-left">
+              <div className="navbar-item-inner-icon-wrapper flexbox">
+                <FaAudioDescription />
+              </div>
+              <Link
+                to="/description"
+                className="link-text"
+                style={{ textDecoration: "none" }}
+              >
+                Description
               </Link>
             </div>
           </li>

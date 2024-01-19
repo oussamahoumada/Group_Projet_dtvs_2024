@@ -9,6 +9,7 @@ import React from "react";
 import "./App.css";
 import NavBar from "./components/navbar/navbar";
 import Home from "./components/home";
+import Description from "./pages/Description";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="pass" element={<Passe />} />
           <Route path="goal" element={<Goal />} />
           <Route path="foul" element={<Foul />} />
+          <Route path="description" element={<Description />} />
           <Route path="exercice3" element={<Exercice3 />} />
         </Routes>
       </BrowserRouter>
