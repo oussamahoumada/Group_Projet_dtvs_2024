@@ -16,7 +16,7 @@ function App() {
       <BrowserRouter>
         <NavBar />
         <Routes>
-          <Route index path="" element={<Home />} />
+          <Route index path="/datavis-project-2024" element={<Home />} />
           <Route path="pass" element={<Passe />} />
           <Route path="goal" element={<Goal />} />
           <Route path="foul" element={<Foul />} />
