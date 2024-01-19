@@ -27,37 +27,37 @@ function NavBar() {
             </div>
           </li>
           <li className="navbar-item flexbox-left">
-            <a className="navbar-item-inner flexbox-left" href="goal">
+            <div className="navbar-item-inner flexbox-left">
               <div className="navbar-item-inner-icon-wrapper flexbox">
                 <GiGoalKeeper />
               </div>
-              <span className="link-text">Buts</span>
-            </a>
+              <Link to="/goal">Buts</Link>
+            </div>
           </li>
 
           <li className="navbar-item flexbox-left">
-            <a className="navbar-item-inner flexbox-left" href="pass">
+            <div className="navbar-item-inner flexbox-left">
               <div className="navbar-item-inner-icon-wrapper flexbox">
                 <GiSoccerKick />
               </div>
-              <span className="link-text">Passe</span>
-            </a>
+              <Link to="/pass">Passe</Link>
+            </div>
           </li>
           <li className="navbar-item flexbox-left">
-            <a className="navbar-item-inner flexbox-left" href="foul">
+            <div className="navbar-item-inner flexbox-left">
               <div className="navbar-item-inner-icon-wrapper flexbox">
                 <FaUserInjured />
               </div>
-              <span className="link-text">Fautes</span>
-            </a>
+              <Link to="/foul">Fautes</Link>
+            </div>
           </li>
           <li className="navbar-item flexbox-left">
-            <a className="navbar-item-inner flexbox-left" href="exercice3">
+            <div className="navbar-item-inner flexbox-left">
               <div className="navbar-item-inner-icon-wrapper flexbox">
                 <LiaPenSolid />
               </div>
-              <span className="link-text">Exercice3</span>
-            </a>
+              <Link to="/exercice3">Exercice3</Link>
+            </div>
           </li>
         </ul>
       </nav>
