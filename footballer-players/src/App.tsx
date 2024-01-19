@@ -1,13 +1,15 @@
-import './App.css'
-import React from 'react'
-import Home from './components/home'
-import Goal from './pages/Goal'
-import Foul from './pages/Foul'
+import "./App.css";
+import Goal from "./pages/Goal";
+import Foul from "./pages/Foul";
 import { Outlet } from "react-router-dom";
-import Passe from './pages/Passe'
-import NavBar from './components/navbar/navbar'
-import Exercice3 from './pages/Exercice3'
+import Passe from "./pages/Passe";
+import Exercice3 from "./pages/Exercice3";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React from "react";
+import "./App.css";
+import NavBar from "./components/navbar/navbar";
+import Home from "./components/home";
+import GeoCard from "./components/GeoCard/GeoCard";
 
 function App() {
   return (
@@ -23,8 +25,12 @@ function App() {
       </BrowserRouter>
       <NavBar />
       <Outlet />
+      {/* <NavBar /> */}
+      {/* <GraphCountryFootballer /> */}
+      {/* <Home /> */}
+      <GeoCard></GeoCard>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
