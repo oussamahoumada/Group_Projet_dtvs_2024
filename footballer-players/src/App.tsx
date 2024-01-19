@@ -25,10 +25,6 @@ function App() {
       </BrowserRouter>
       <NavBar />
       <Outlet />
-      {/* <NavBar /> */}
-      {/* <GraphCountryFootballer /> */}
-      {/* <Home /> */}
-      <GeoCard></GeoCard>
     </div>
   );
 }
