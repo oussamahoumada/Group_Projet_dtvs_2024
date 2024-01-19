@@ -23,7 +23,7 @@ function NavBar() {
               <div className="navbar-item-inner-icon-wrapper flexbox">
                 <FaHome />
               </div>
-              <Link to="/">Home</Link>
+              <Link to="/" className="link-text" style={{textDecoration:'none'}}>Home</Link>
             </div>
           </li>
           <li className="navbar-item flexbox-left">
@@ -31,7 +31,7 @@ function NavBar() {
               <div className="navbar-item-inner-icon-wrapper flexbox">
                 <GiGoalKeeper />
               </div>
-              <Link to="/goal">Buts</Link>
+              <Link to="/goal" className="link-text" style={{textDecoration:'none'}}>Buts</Link>
             </div>
           </li>
 
@@ -40,7 +40,7 @@ function NavBar() {
               <div className="navbar-item-inner-icon-wrapper flexbox">
                 <GiSoccerKick />
               </div>
-              <Link to="/pass">Passe</Link>
+              <Link to="/pass" className="link-text" style={{textDecoration:'none'}}>Passe</Link>
             </div>
           </li>
           <li className="navbar-item flexbox-left">
@@ -48,7 +48,7 @@ function NavBar() {
               <div className="navbar-item-inner-icon-wrapper flexbox">
                 <FaUserInjured />
               </div>
-              <Link to="/foul">Fautes</Link>
+              <Link to="/foul" className="link-text" style={{textDecoration:'none'}}>Fautes</Link>
             </div>
           </li>
           <li className="navbar-item flexbox-left">
@@ -56,7 +56,7 @@ function NavBar() {
               <div className="navbar-item-inner-icon-wrapper flexbox">
                 <LiaPenSolid />
               </div>
-              <Link to="/exercice3">Exercice3</Link>
+              <Link to="/exercice3" className="link-text" style={{textDecoration:'none'}}>Exercice3</Link>
             </div>
           </li>
         </ul>
