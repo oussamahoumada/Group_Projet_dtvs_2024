@@ -48,27 +48,23 @@ function Passe() {
                         labels={labelsTopAssists}
                         data={dataTopAssists}
                         chartLabel='doughnut'
-                        titleChart="Graphique des nombre des passe décisive par compétition."
+                        titleChart="Les équipes qui ont effectués le plus de passes correctes."
                     />
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '50%', height: '50vh', 'marginTop': '3%' }}>
-                    {/* Changer le title */}
-
                     <ChartComponent
                         labels={labelsTopPPA}
                         data={dataTopPPA}
                         chartLabel='bar'
-                        titleChart="Graphique les meilleurs buteurs pour chaque compétition."
+                        titleChart="Graphique des nombres de passes décisives par compétition."
                     />
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '50%', height: '50vh', 'marginTop': '5%' }}>
-                    {/* Changer le title */}
-
                     <ChartComponent
                         labels={labelsTopSw}
                         data={dataTopSw}
                         chartLabel='line'
-                        titleChart="Graphique les meilleurs buteurs pour chaque compétition."
+                        titleChart="Graphique équipé qui ont effectué le plus de passes longues."
                     />
                 </div>
                 </>

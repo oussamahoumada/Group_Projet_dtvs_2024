@@ -40,7 +40,7 @@ export function getTopPPA(): ResponseInterface
   const topPPACount: Record<string, number> = {};
 
   playersData.data.forEach((player: PlayerInterface) => {
-    const squad: string = player.Comp;
+    const squad: string = player.Squad;
     const ppa: number = player.PPA;
 
     if (!topPPA[squad]) {
@@ -68,7 +68,7 @@ export function getTopSw(): ResponseInterface
   const topSwCount: Record<string, number> = {};
 
   playersData.data.forEach((player: PlayerInterface) => {
-    const squad: string = player.Comp;
+    const squad: string = player.Squad;
     const sw: number = player.Sw;
 
     if (!topSw[squad]) {

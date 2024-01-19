@@ -44,13 +44,11 @@ function Goal() {
             {dataTopScores ? (
                 <>
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '50%', height: '50vh' }}>
-                    {/* Changer le title */}
-
                     <ChartComponent
                         labels={labelsTopGoalsOnTarget}
                         data={dataTopGoalsOnTarget}
                         chartLabel='doughnut'
-                        titleChart="Graphique les meilleurs buteurs pour chaque compétition."
+                        titleChart="Les équipes qui ont le plus de tires cadrés"
                     />
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '50%', height: '50vh', 'marginTop': '3%' }}>
@@ -58,17 +56,15 @@ function Goal() {
                         labels={labelsTopScorers}
                         data={dataTopScores}
                         chartLabel='bar'
-                        titleChart="Graphique les meilleurs buteurs pour chaque compétition."
+                        titleChart="Meilleurs buteurs pour chaque compétition."
                     />
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '50%', height: '50vh', 'marginTop': '5%' }}>
-                    {/* Changer le title */}
-
                     <ChartComponent
                         labels={labelsTopFareGoal}
                         data={dataTopFareGoal}
                         chartLabel='line'
-                        titleChart="Graphique les meilleurs buteurs pour chaque compétition."
+                        titleChart="Les équipes avec les buts marqué de loin"
                     />
                 </div>
                 </>
