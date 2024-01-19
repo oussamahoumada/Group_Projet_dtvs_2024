@@ -1,10 +1,10 @@
+import Grid from '@mui/material/Grid';
 import { getTkl } from "../helpers/foulsHelper";
+import { CircularProgress } from "@mui/material";
 import { getTopSw } from "../helpers/passHelpers";
 import React, { useEffect, useState } from "react";
 import ChartComponent from "./Graph/ChartComponent";
 import { getTopScorers } from "../helpers/goalsHelper";
-import Grid from '@mui/material/Grid';
-
 
 function Home() {
 
@@ -46,6 +46,7 @@ function Home() {
                 display: 'flex', flexDirection: 'column', alignItems: 'center',
                 height: '50%', marginTop: '2%'
             }}>
+                {dataTopScores ? (
                 <Grid container spacing={1} style={{justifyContent: 'center', paddingLeft: '2%'}}>
                     <Grid item xs={4}>
                         <ChartComponent
@@ -71,7 +72,12 @@ function Home() {
                                 titleChart="Graphique équipé qui ont effectué le plus de passes longues."
                             />
                     </Grid>
-                </Grid>                
+                    </Grid>    
+                ) : (
+                <div>
+                    <CircularProgress />
+                </div>
+            )}    
             </div>
         </>
     )
