@@ -1,8 +1,6 @@
 import "./style.css";
 import React, { useEffect, useState } from "react";
 import { VectorMap } from "react-jvectormap";
-import dataFootballer from "../../assets/football_players_project.json";
-const { getCode, getName, getData } = require("country-list");
 
 const countryCodeMapping = {
   ALB: "AL",
@@ -114,6 +112,7 @@ const GeoCard = ({ mapData, info }) => {
 
   return (
     <div>
+      <h5 style={{ marginBottom: "20px", color: "#555555" }}> {info.titre} </h5>
       <VectorMap
         map={"world_mill"}
         backgroundColor="#5CA0ff" //change it to ocean blue: #0077be
@@ -169,8 +168,6 @@ const GeoCard = ({ mapData, info }) => {
           );
         }}
       />
-
-      <h5 style={{ marginTop: "10px" }}> {info.titre} </h5>
     </div>
   );
 };
