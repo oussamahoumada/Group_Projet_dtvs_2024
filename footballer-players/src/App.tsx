@@ -9,26 +9,21 @@ import React from "react";
 import "./App.css";
 import NavBar from "./components/navbar/navbar";
 import Home from "./components/home";
-import GeoCard from "./components/GeoCard/GeoCard";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <NavBar />
         <Routes>
-          <Route index element={<Home />} />
+          <Route index path="" element={<Home />} />
           <Route path="pass" element={<Passe />} />
           <Route path="goal" element={<Goal />} />
           <Route path="foul" element={<Foul />} />
           <Route path="exercice3" element={<Exercice3 />} />
         </Routes>
       </BrowserRouter>
-      <NavBar />
       <Outlet />
-      {/* <NavBar /> */}
-      {/* <GraphCountryFootballer /> */}
-      {/* <Home /> */}
-      {/* <GeoCard></GeoCard> */}
     </div>
   );
 }

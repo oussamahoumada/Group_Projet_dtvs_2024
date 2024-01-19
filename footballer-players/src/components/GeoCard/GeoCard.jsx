@@ -1,8 +1,6 @@
 import "./style.css";
 import React, { useEffect, useState } from "react";
 import { VectorMap } from "react-jvectormap";
-import dataFootballer from "../../assets/football_players_project.json";
-const { getCode, getName, getData } = require("country-list");
 
 const countryCodeMapping = {
   ALB: "AL",
@@ -102,106 +100,12 @@ const countryCodeMapping = {
   ZIM: "ZW",
 };
 
-const GeoCard = () => {
-  const [mapData, setMapData] = useState([]);
-
-  const handleClick = (e, countryCode) => {
-    // console.log(countryCode);
-  };
-
-  function calculatCountryGoals(data) {
-    // console.log(data);
-    // Créer un objet pour stocker le nombre de buts par nation
-    const goalsByNation = {};
-
-    // Parcourir chaque joueur et agréger le nombre de buts par nation
-    data.forEach((player) => {
-      const nation = player.Nation;
-      const goals = player.Goals || 0; // Assurez-vous que Goals est défini
-      const twoLetterCode = countryCodeMapping[nation];
-      // Ajoutez les buts au total existant pour cette nation
-      goalsByNation[twoLetterCode] =
-        (goalsByNation[twoLetterCode] || 0) + goals;
-    });
-
-    setMapData(goalsByNation);
-    return goalsByNation;
-  }
-
-  function calculatCountryAssists(data) {
-    const statsByNation = {};
-
-    // Parcourir le tableau de données pour calculer les totaux par pays
-    data.forEach((player) => {
-      const nation = player.Nation;
-      const assists = player.Assists || 0; // Assurez-vous que Assists est défini
-      const twoLetterCode = countryCodeMapping[nation];
-
-      // Ajouter les assists au total existant pour cette nation
-      statsByNation[twoLetterCode] = statsByNation[twoLetterCode] || {
-        total: 0,
-        count: 0,
-      };
-      statsByNation[twoLetterCode].total += assists;
-      statsByNation[twoLetterCode].count += 1;
-    });
-
-    // Calculer la moyenne pour chaque pays
-    const averageAssistsByNation = {};
-    Object.keys(statsByNation).forEach((code) => {
-      const totalAssists = statsByNation[code].total;
-      const assistCount = statsByNation[code].count;
-
-      // Assurez-vous de ne pas diviser par zéro
-      averageAssistsByNation[code] =
-        assistCount > 0 ? ((totalAssists / assistCount) * 100).toFixed(2) : 0;
-    });
-
-    setMapData(averageAssistsByNation);
-
-    return averageAssistsByNation;
-  }
-
-  function calculatCountryCards(data) {
-    const cardsByNation = {};
-
-    // Parcourir le tableau de données pour calculer les totaux par pays
-    data.forEach((player) => {
-      const nation = player.Nation;
-      const crdY = player.CrdY || 0; // Assurez-vous que Assists est défini
-      const crdR = player.CrdX || 0; // Assurez-vous que Assists est défini
-      const crdTotal = crdY + crdR;
-      const twoLetterCode = countryCodeMapping[nation];
-
-      // Ajouter les assists au total existant pour cette nation
-      cardsByNation[twoLetterCode] = cardsByNation[twoLetterCode] || {
-        total: 0,
-        count: 0,
-      };
-      cardsByNation[twoLetterCode].total += crdTotal;
-      cardsByNation[twoLetterCode].count += 1;
-    });
-
-    // Calculer la moyenne pour chaque pays
-    const averageAssistsByNation = {};
-    Object.keys(cardsByNation).forEach((code) => {
-      const totalAssists = cardsByNation[code].total;
-      const assistCount = cardsByNation[code].count;
-      // Assurez-vous de ne pas diviser par zéro
-      averageAssistsByNation[code] =
-        assistCount > 0 ? ((totalAssists / assistCount) * 100).toFixed(2) : 0;
-    });
-
-    setMapData(averageAssistsByNation);
-    return averageAssistsByNation;
-  }
-
-  useEffect(() => {
-    calculatCountryCards(dataFootballer);
-  }, []);
+const GeoCard = ({ mapData, info }) => {
+  const handleClick = () => {};
 
   return (
-    <div>
+    <div style={{ marginBottom: "60px" }}>
+      <h5 style={{ marginBottom: "20px", color: "#555555" }}> {info.titre} </h5>
       <VectorMap
         map={"world_mill"}
         backgroundColor="#5CA0ff" //change it to ocean blue: #0077be
@@ -233,7 +137,7 @@ const GeoCard = () => {
           regions: [
             {
               values: mapData, //this is your data
-              scale: ["#95E473", "#2F2E2E"], //your color game's here
+              scale: info.scale, //your color game's here
               normalizeFunction: "polynomial",
             },
           ],
@@ -250,7 +154,7 @@ const GeoCard = () => {
               "Count: " +
               "<b>" +
               mapData[code] +
-              (mapData[code] ? " %" : "") +
+              (mapData[code] ? (info.percent ? " %" : "") : "") +
               "</b>" +
               "</p>" +
               "</div>"
